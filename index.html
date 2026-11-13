@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#101613">
+  <meta name="description" content="A classic Snake game you can play in the browser. Eat the dots, avoid the walls and your tail.">
+  <title>Snake</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23101613'/%3E%3Ccircle cx='11' cy='17' r='3.4' fill='%231d7a46'/%3E%3Ccircle cx='17' cy='17' r='3.8' fill='%23d7f58a'/%3E%3Ccircle cx='24' cy='11' r='2.3' fill='%23ffc14d'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <p class="sr-only">Classic Snake. Move with the arrow keys, WASD, the on-screen pad, or by swiping the board.</p>
+    <header class="top">
+      <h1>Snake</h1>
+      <div class="scores">
+        <div class="stat">
+          <span id="score-label">Score</span>
+          <strong id="score" aria-labelledby="score-label">0</strong>
+        </div>
+        <div class="stat" id="best-stat">
+          <span id="best-label">Best</span>
+          <strong id="best" aria-labelledby="best-label">0</strong>
+        </div>
+      </div>
+    </header>
+
+    <div class="stage">
+      <div class="board" id="board">
+        <canvas id="canvas" width="420" height="420"></canvas>
+        <div class="overlay" id="overlay">
+          <h2 id="overlay-title">Ready</h2>
+          <p id="overlay-text">Eat the dot. Avoid the walls and your tail.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" id="toggle" class="primary">Start</button>
+      <button type="button" id="restart" class="ghost">Restart</button>
+    </div>
+
+    <div class="pad" id="pad" role="group" aria-label="Direction pad">
+      <button type="button" class="pad-btn up" data-dir="up" aria-label="Up">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14.5 12 8.5l6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button type="button" class="pad-btn left" data-dir="left" aria-label="Left">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14.5 12 8.5l6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button type="button" class="pad-btn down" data-dir="down" aria-label="Down">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14.5 12 8.5l6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button type="button" class="pad-btn right" data-dir="right" aria-label="Right">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14.5 12 8.5l6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <p class="hint">Arrows or WASD · swipe the board · Space pauses</p>
+    <p class="sr-only" id="live" aria-live="polite"></p>
+    <noscript>This game needs JavaScript.</noscript>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
