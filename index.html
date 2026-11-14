@@ -4,17 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#101613">
-  <meta name="description" content="A classic Snake game you can play in the browser. Eat the dots, avoid the walls and your tail.">
+  <meta name="theme-color" content="#070b09">
+  <meta name="description" content="A cinematic Snake game you can play in the browser. Eat the light, avoid the walls and your tail.">
   <title>Snake</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23101613'/%3E%3Ccircle cx='11' cy='17' r='3.4' fill='%231d7a46'/%3E%3Ccircle cx='17' cy='17' r='3.8' fill='%23d7f58a'/%3E%3Ccircle cx='24' cy='11' r='2.3' fill='%23ffc14d'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23070b09'/%3E%3Ccircle cx='11' cy='17' r='3.4' fill='%231d7a46'/%3E%3Ccircle cx='17' cy='17' r='3.8' fill='%23d7f58a'/%3E%3Ccircle cx='24' cy='11' r='2.3' fill='%23ffc14d'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <main class="shell">
-    <p class="sr-only">Classic Snake. Move with the arrow keys, WASD, the on-screen pad, or by swiping the board.</p>
+    <p class="sr-only">Snake. Move with the arrow keys, WASD, the on-screen pad, or by swiping the board. M toggles sound.</p>
     <header class="top">
-      <h1>Snake</h1>
+      <div class="brand">
+        <p class="eyebrow">Night run</p>
+        <h1>Snake</h1>
+      </div>
       <div class="scores">
         <div class="stat">
           <span id="score-label">Score</span>
@@ -27,10 +30,18 @@
       </div>
     </header>
 
+    <div class="tempo" aria-hidden="true">
+      <span>Tempo</span>
+      <span class="tempo-track"><i id="tempo-bar"></i></span>
+    </div>
+
     <div class="stage">
       <div class="board" id="board">
-        <canvas id="canvas" width="420" height="420"></canvas>
+        <canvas id="canvas" width="420" height="420" aria-hidden="true"></canvas>
+        <div class="grain"></div>
+        <div class="letterbox" aria-hidden="true"><span></span><span></span></div>
         <div class="overlay" id="overlay">
+          <p class="kicker" id="overlay-kicker">Night run</p>
           <h2 id="overlay-title">Ready</h2>
           <p id="overlay-text">Eat the dot. Avoid the walls and your tail.</p>
         </div>
@@ -39,6 +50,17 @@
 
     <div class="actions">
       <button type="button" id="toggle" class="primary">Start</button>
+      <button type="button" id="sound" class="sound" aria-pressed="false" aria-label="Sound off">
+        <svg class="icon-off" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4.5 9.5h3.2L12 6.2v11.6l-4.3-3.3H4.5z" fill="currentColor"/>
+          <path d="M15.2 9.8l4.2 4.4M19.4 9.8l-4.2 4.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+        <svg class="icon-on" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4.5 9.5h3.2L12 6.2v11.6l-4.3-3.3H4.5z" fill="currentColor"/>
+          <path d="M15 9.2a4.2 4.2 0 0 1 0 5.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M17.3 7a7 7 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+      </button>
       <button type="button" id="restart" class="ghost">Restart</button>
     </div>
 
@@ -57,7 +79,7 @@
       </button>
     </div>
 
-    <p class="hint">Arrows or WASD · swipe the board · Space pauses</p>
+    <p class="hint">Arrows, WASD, or swipe · Space pauses · M for sound</p>
     <p class="sr-only" id="live" aria-live="polite"></p>
     <noscript>This game needs JavaScript.</noscript>
   </main>
