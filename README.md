@@ -2,7 +2,7 @@
 
 A classic Snake game in plain HTML, CSS, and JavaScript. Open `index.html` in a browser — there is no build step. The same files sit at the repository root, so GitHub Pages can serve them from the `main` branch.
 
-The snake moves on a grid and grows each time it eats a dot. The run ends if it hits a wall or its own body. The pace starts calm and picks up a little with every point. Your best score is saved in this browser.
+The snake glides across a dark grid and grows each time it eats a dot. The run ends if it hits a wall or its own body. The pace starts calm and picks up a little with every point. Your best score is saved in this browser.
 
 ## How to play
 
@@ -10,7 +10,8 @@ The snake moves on a grid and grows each time it eats a dot. The run ends if it 
 - **Move** with the arrow keys or WASD. On a phone, swipe the board or use the on-screen pad.
 - **Pause** with the Pause button or Space. Resume the same way.
 - **Restart** with the Restart button. After a game over, Play again, Restart, or a direction key starts a new run.
-- Eat the gold dot to grow. Avoid the walls and your tail.
+- **Sound** with the speaker button or the M key. It stays off until you turn it on, and this browser remembers the choice.
+- Eat the gold dot to grow. Avoid the walls and your tail. The snake glides between cells, and a crash holds for a short beat before the title card.
 
 ## GitHub Pages
 
